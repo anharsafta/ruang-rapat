@@ -3,6 +3,7 @@ import { api } from "../lib/api";
 import { isPastDate, sortSchedules } from "../lib/helpers";
 import ScheduleTable from "../components/ScheduleTable";
 import WeeklyCalendar from "../components/WeeklyCalendar";
+import MonthlyCalendar from "../components/MonthlyCalendar";
 import AppFooter from "../components/AppFooter";
 import { Input } from "../components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../components/ui/select";
@@ -71,6 +72,7 @@ export default function PublicJadwal() {
           <TabsList className="mb-4">
             <TabsTrigger value="tabel" data-testid="public-tab-tabel">Tabel Jadwal</TabsTrigger>
             <TabsTrigger value="kalender" data-testid="public-tab-kalender">Kalender Mingguan</TabsTrigger>
+            <TabsTrigger value="bulanan" data-testid="public-tab-bulanan">Kalender Bulanan</TabsTrigger>
           </TabsList>
           <TabsContent value="tabel">
             <ScheduleTable schedules={filtered} isAdmin={false} />
@@ -78,6 +80,11 @@ export default function PublicJadwal() {
           <TabsContent value="kalender">
             <div className="rounded-xl border border-border bg-card p-4">
               <WeeklyCalendar schedules={active} />
+            </div>
+          </TabsContent>
+          <TabsContent value="bulanan">
+            <div className="rounded-xl border border-border bg-card p-4">
+              <MonthlyCalendar schedules={schedules} />
             </div>
           </TabsContent>
         </Tabs>

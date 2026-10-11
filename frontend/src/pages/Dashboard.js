@@ -8,6 +8,8 @@ import ScheduleTable from "../components/ScheduleTable";
 import ScheduleForm from "../components/ScheduleForm";
 import ExportDialog from "../components/ExportDialog";
 import WeeklyCalendar from "../components/WeeklyCalendar";
+import MonthlyCalendar from "../components/MonthlyCalendar";
+import StatsPanel from "../components/StatsPanel";
 import SuccessPopup from "../components/SuccessPopup";
 import AppFooter from "../components/AppFooter";
 import { Button } from "../components/ui/button";
@@ -162,10 +164,13 @@ export default function Dashboard() {
           </p>
         </div>
 
+        <StatsPanel schedules={schedules} />
+
         <Tabs defaultValue="tabel">
           <TabsList className="mb-4">
             <TabsTrigger value="tabel" data-testid="tab-tabel">Tabel Jadwal</TabsTrigger>
             <TabsTrigger value="kalender" data-testid="tab-kalender">Kalender Mingguan</TabsTrigger>
+            <TabsTrigger value="bulanan" data-testid="tab-bulanan">Kalender Bulanan</TabsTrigger>
           </TabsList>
           <TabsContent value="tabel">
             <ScheduleTable schedules={filtered} isAdmin onEdit={(s) => setEditConfirm(s)} onDelete={(s) => setDeleteTarget(s)} />
@@ -173,6 +178,11 @@ export default function Dashboard() {
           <TabsContent value="kalender">
             <div className="rounded-xl border border-border bg-card p-4">
               <WeeklyCalendar schedules={activeSchedules} />
+            </div>
+          </TabsContent>
+          <TabsContent value="bulanan">
+            <div className="rounded-xl border border-border bg-card p-4">
+              <MonthlyCalendar schedules={schedules} />
             </div>
           </TabsContent>
         </Tabs>
