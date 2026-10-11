@@ -76,18 +76,22 @@ h1, h2, h3, h4, .font-heading {
 }
 
 @keyframes marquee {
-    0% { transform: translateX(100%); }
+    0% { transform: translateX(0); }
     100% { transform: translateX(-100%); }
 }
 .marquee-track {
     display: inline-block;
     white-space: nowrap;
-    animation: marquee 22s linear infinite;
+    padding-left: 100%;
+    animation: marquee 24s linear infinite;
+    will-change: transform;
 }
 .marquee-fast {
     display: inline-block;
     white-space: nowrap;
-    animation: marquee 16s linear infinite;
+    padding-left: 100%;
+    animation: marquee 30s linear infinite;
+    will-change: transform;
 }
 
 .board-grid-bg {
