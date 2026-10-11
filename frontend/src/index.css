@@ -85,6 +85,8 @@ h1, h2, h3, h4, .font-heading {
     animation: marquee 22s linear infinite;
 }
 .marquee-fast {
+    display: inline-block;
+    white-space: nowrap;
     animation: marquee 16s linear infinite;
 }
 

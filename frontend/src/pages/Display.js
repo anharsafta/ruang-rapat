@@ -73,12 +73,12 @@ export default function Display() {
         <table className="w-full table-fixed border-separate border-spacing-y-2" data-testid="display-table">
           <thead>
             <tr className="text-left text-sm uppercase tracking-wide text-slate-400">
-              <th className="w-[14%] px-4 pb-2 font-semibold">Tanggal</th>
-              <th className="w-[13%] px-4 pb-2 font-semibold">Waktu</th>
-              <th className="w-[16%] px-4 pb-2 font-semibold">Ruang</th>
-              <th className="w-[18%] px-4 pb-2 font-semibold">Pengguna</th>
-              <th className="w-[23%] px-4 pb-2 font-semibold">Kegiatan / Rapat</th>
-              <th className="w-[16%] px-4 pb-2 font-semibold">Status</th>
+              <th className="w-[11%] px-3 pb-2 font-semibold">Tanggal</th>
+              <th className="w-[9%] px-3 pb-2 font-semibold">Waktu</th>
+              <th className="w-[13%] px-3 pb-2 font-semibold">Ruang</th>
+              <th className="w-[15%] px-3 pb-2 font-semibold">Pengguna</th>
+              <th className="w-[38%] px-3 pb-2 font-semibold">Kegiatan / Rapat</th>
+              <th className="w-[14%] px-3 pb-2 font-semibold">Status</th>
             </tr>
           </thead>
           <tbody>
@@ -90,12 +90,12 @@ export default function Display() {
               const st = STATUS_STYLE[status];
               return (
                 <tr key={s.id} data-testid={`display-row-${s.id}`} className={`${st.row} text-lg lg:text-xl font-semibold`}>
-                  <td className={`px-4 py-3 rounded-l-xl ${st.text}`}>{formatTanggal(s.tanggal)}</td>
-                  <td className="px-4 py-3 tabular-nums text-slate-200">{fmtWaktu(s)}</td>
-                  <td className="px-4 py-3 text-white">{s.ruangan}</td>
-                  <td className="px-4 py-3 text-slate-200 truncate">{s.pengguna}</td>
-                  <td className="px-4 py-3 text-slate-100"><Kegiatan text={s.kegiatan} /></td>
-                  <td className="px-4 py-3 rounded-r-xl">
+                  <td className={`px-3 py-3 rounded-l-xl ${st.text}`}>{formatTanggal(s.tanggal)}</td>
+                  <td className="px-3 py-3 tabular-nums text-slate-200 whitespace-nowrap">{fmtWaktu(s)}</td>
+                  <td className="px-3 py-3 text-white">{s.ruangan}</td>
+                  <td className="px-3 py-3 text-slate-200 truncate">{s.pengguna}</td>
+                  <td className="px-3 py-3 text-slate-100"><Kegiatan text={s.kegiatan} /></td>
+                  <td className="px-3 py-3 rounded-r-xl">
                     <span className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-sm lg:text-base font-medium ${st.badge} ${st.pulse ? "animate-pulse" : ""}`} data-testid={`display-status-${s.id}`}>
                       <span>{st.icon}</span> {status}
                     </span>

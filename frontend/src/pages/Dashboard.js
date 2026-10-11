@@ -17,7 +17,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "../components/ui/tabs";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle } from "../components/ui/alert-dialog";
 import { toast } from "sonner";
-import { Plus, Printer, Share2, Monitor, Settings as SettingsIcon, LogOut, Building2, Filter, Copy, Check, CalendarCheck } from "lucide-react";
+import { Plus, Printer, Share2, Monitor, Settings as SettingsIcon, LogOut, Building2, Filter, Copy, Check } from "lucide-react";
 
 const MAX_ROWS = 40;
 
@@ -123,9 +123,6 @@ export default function Dashboard() {
             <Plus className="h-5 w-5 mr-2" /> INPUT JADWAL BARU
           </Button>
           <div className="flex flex-wrap items-center gap-2">
-            <span data-testid="count-terjadwal" className="inline-flex items-center gap-1.5 rounded-full bg-[#003366]/10 text-[#003366] dark:bg-blue-500/20 dark:text-blue-300 px-3.5 py-1.5 text-sm font-semibold">
-              <CalendarCheck className="h-4 w-4" /> {activeSchedules.length} Terjadwal
-            </span>
             <Button variant="outline" onClick={() => setExportOpen(true)} data-testid="cetak-rekap-btn"><Printer className="h-4 w-4 mr-1.5" /> Cetak Rekap</Button>
             <Button variant="outline" onClick={() => setShareOpen(true)} data-testid="share-jadwal-btn"><Share2 className="h-4 w-4 mr-1.5" /> Share Jadwal</Button>
           </div>
