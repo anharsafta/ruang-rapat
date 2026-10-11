@@ -1,0 +1,139 @@
+{
+  "identity": {
+    "name": "E1 Anti-AI Designer",
+    "project": "Sistem Penjadwalan Ruang Rapat Kantor Gubernur Kalimantan Timur",
+    "archetype": "ARCHETYPE 4: SWISS & HIGH-CONTRAST + INSTITUTIONAL GOVERNMENT AUTHORITY",
+    "emotional_tone": "Formil, Berwibawa, Modern, Presisi, and High-Readability Institutional Government UI",
+    "theme_rules": "Light mode default for administrative dashboard and public schedule; dark mode default for Airport Flight Board display screen. Full width container up to 1800px max width for TV/wide monitors."
+  },
+  "colors": {
+    "light": {
+      "bg_primary": "#F8FAFC",
+      "bg_surface": "#FFFFFF",
+      "bg_card": "#FFFFFF",
+      "border": "#E2E8F0",
+      "text_main": "#0F172A",
+      "text_muted": "#475569",
+      "brand_primary": "#003366",
+      "brand_navy": "#0A2540",
+      "brand_accent": "#0D47A1",
+      "brand_gold": "#D97706",
+      "brand_gold_light": "#FEF3C7"
+    },
+    "dark": {
+      "bg_primary": "#0B1120",
+      "bg_surface": "#1E293B",
+      "bg_card": "#0F172A",
+      "border": "#334155",
+      "text_main": "#F8FAFC",
+      "text_muted": "#94A3B8",
+      "brand_primary": "#2563EB",
+      "brand_navy": "#1E3A8A",
+      "brand_accent": "#3B82F6",
+      "brand_gold": "#F59E0B"
+    },
+    "airport_flight_board_statuses": {
+      "sedang_berlangsung": {
+        "label": "SEDANG BERLANGSUNG",
+        "bg": "bg-blue-900/60 dark:bg-blue-950/80",
+        "text": "text-blue-400 dark:text-blue-300",
+        "border": "border-blue-500/50",
+        "badge": "#3B82F6",
+        "description": "Biru terang untuk rapat yang sedang berjalan"
+      },
+      "segera_digunakan": {
+        "label": "SEGERA DIGUNAKAN",
+        "bg": "bg-amber-950/70 dark:bg-amber-950/90",
+        "text": "text-amber-300 dark:text-amber-200 animate-pulse",
+        "border": "border-amber-500/50",
+        "badge": "#F59E0B",
+        "description": "Kuning/Amber berkedip halus untuk rapat <30 menit lagi"
+      },
+      "terjadwal": {
+        "label": "TERJADWAL",
+        "bg": "bg-rose-950/60 dark:bg-rose-950/80",
+        "text": "text-rose-400 dark:text-rose-300",
+        "border": "border-rose-500/50",
+        "badge": "#EF4444",
+        "description": "Merah tegas untuk jadwal mendatang hari ini/mendatang"
+      },
+      "selesai": {
+        "label": "SELESAI",
+        "bg": "bg-slate-800/80 dark:bg-slate-900/90",
+        "text": "text-slate-100 dark:text-slate-200",
+        "border": "border-slate-600/50",
+        "badge": "#F8FAFC",
+        "description": "Putih / Slate terang untuk rapat yang telah usai"
+      }
+    }
+  },
+  "typography": {
+    "font_family_heading": "Plus Jakarta Sans, sans-serif",
+    "font_family_body": "Inter, sans-serif",
+    "font_family_flight_board": "Chivo Mono, JetBrains Mono, monospace",
+    "sizes": {
+      "h1_hero": "text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight",
+      "h2_section": "text-2xl sm:text-3xl font-bold tracking-tight",
+      "h3_card": "text-lg sm:text-xl font-semibold",
+      "display_flight_header": "text-2xl sm:text-3xl lg:text-4xl font-extrabold uppercase tracking-wider font-mono",
+      "display_flight_row": "text-lg sm:text-xl lg:text-2xl font-bold font-mono tracking-wide"
+    }
+  },
+  "layouts_and_grids": {
+    "max_width": "max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-8",
+    "dashboard_grid": "grid grid-cols-1 lg:grid-cols-12 gap-6",
+    "flight_board_layout": "w-full min-h-screen bg-[#070C18] text-slate-100 font-mono flex flex-col justify-between overflow-hidden",
+    "responsive_toggle": "Provides full 1800px desktop view or mobile simulation mode"
+  },
+  "rooms_data": [
+    "Olah Bebaya",
+    "Odah Etam",
+    "Halaman Kantor",
+    "Ruang Rapat Gub",
+    "Ruang Rapat Wagub",
+    "Ruang Rapat Sekda",
+    "Ruhui Rahayu",
+    "Pandurata",
+    "Tepian 1",
+    "Tepian 2",
+    "Heart Of Borneo",
+    "Daya Taka",
+    "Tenguyun",
+    "Batiwakal",
+    "Tuah Himba"
+  ],
+  "ruhui_rahayu_seating_arrangements": [
+    "U-Shape (Bentuk U)",
+    "Classroom (Gaya Kelas)",
+    "Theater (Gaya Teater)",
+    "Boardroom (Meja Bundar/Oval)",
+    "Rangkaian VVIP (Protokoler Khusus)"
+  ],
+  "image_urls": {
+    "logo_kaltim": "https://images.unsplash.com/photo-1628062699790-7c45262b82b4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHw0fHxjb25mZXJlbmNlJTIwcm9vbXxlbnwwfHx8fDE3OTE3MjY2ODZ8MA&ixlib=rb-4.1.0&q=85",
+    "login_bg_default": "https://images.unsplash.com/photo-1571624436279-b272aff752b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwyfHxtZWV0aW5nJTIwcm9vbSUyMHRhYmxlfGVufDB8fHx8MTc4ODg3NzQ1NHww&ixlib=rb-4.1.0&q=85",
+    "room_placeholder_1": "https://images.unsplash.com/photo-1517502884422-41eaead166d4?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA4Mzl8MHwxfHNlYXJjaHwzfHxtZWV0aW5nJTIwcm9vbSUyMHRhYmxlfGVufDB8fHx8MTc4ODg3NzQ1NHww&ixlib=rb-4.1.0&q=85",
+    "room_placeholder_2": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwyfHxjb25mZXJlbmNlJTIwcm9vbXxlbnwwfHx8fDE3OTE3MjY2ODZ8MA&ixlib=rb-4.1.0&q=85"
+  },
+  "key_components": {
+    "login_page": "Halaman Login dengan latar foto instansi, form username/password, dan tombol langsung ke Public Jadwal & Display Board",
+    "dashboard_table": "Tabel Jadwal Rapat max 40 data, pencarian real-time, filter tanggal & ruangan, badge warning 'Surat Belum Diunggah', cetak PDF/Excel, tombol share link modal",
+    "input_modal": "Form Input/Edit Jadwal lengkap (Tanggal, Ruangan, Jam Mulai-Selesai, Unit Kerja, Kegiatan, Alat Zoom toggle, Susunan Kursi khusus Ruhui Rahayu, Nama/No WA, Petugas Pencatat, Upload File Surat PDF/Image)",
+    "flight_board_display": "Tampilan Papan Bandara TV Dinding (gelap, font monospace besar, status 4 warna, marquee footer text, waktu live WIB, auto reload countdown)",
+    "weekly_calendar": "Kalender Mingguan interaktif untuk Halaman Jadwal Public & Dashboard",
+    "settings_page": "Pengaturan Running Text Footer Display, Kelola 15 Ruangan, Kelola Petugas Pencatat, Simulasi Upload Logo & Latar Login"
+  },
+  "accessibility_and_testing": {
+    "data_testid_rules": "All interactive inputs, buttons, tables, filters, modals, and status badges MUST include data-testid (e.g. data-testid=\"schedule-input-room-select\", data-testid=\"flight-board-status-badge\").",
+    "contrast": "APCA & WCAG AA compliant. Hover states must explicitly set hover:text-white or hover:text-slate-900 to ensure full legibility."
+  },
+  "instructions_to_main_agent": [
+    "Use standard React .js file conventions (JSX syntax in .js files).",
+    "Ensure layout uses full width container up to 1800px as specified by user choices.",
+    "Support both Light and Dark mode using Tailwind class-based dark mode toggle.",
+    "Implement Web / Mobile version toggle in top navigation bar for responsive preview.",
+    "Ensure Conflict Detection logic alerts user when booking overlapping times for the same room.",
+    "Ensure PDF and Excel exports allow column selection before downloading/printing.",
+    "Display page must look like a high-tech Airport Flight Information Display System (FIDS) for government hall TVs."
+  ]
+}

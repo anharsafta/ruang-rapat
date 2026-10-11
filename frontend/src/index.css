@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Chivo+Mono:wght@400;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+.font-mono-board {
+    font-family: "Chivo Mono", monospace;
+}
+
+@layer base {
+    :root {
+        --background: 210 40% 98%;
+        --foreground: 222 47% 11%;
+        --card: 0 0% 100%;
+        --card-foreground: 222 47% 11%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222 47% 11%;
+        --primary: 210 100% 20%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 210 40% 96%;
+        --secondary-foreground: 222 47% 15%;
+        --muted: 210 40% 96%;
+        --muted-foreground: 215 16% 40%;
+        --accent: 210 40% 94%;
+        --accent-foreground: 222 47% 15%;
+        --destructive: 0 72% 48%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 214 32% 88%;
+        --input: 214 32% 88%;
+        --ring: 210 100% 25%;
+        --gold: 31 95% 44%;
+        --radius: 0.65rem;
+    }
+    .dark {
+        --background: 222 47% 7%;
+        --foreground: 210 40% 98%;
+        --card: 222 44% 12%;
+        --card-foreground: 210 40% 98%;
+        --popover: 222 44% 12%;
+        --popover-foreground: 210 40% 98%;
+        --primary: 213 94% 55%;
+        --primary-foreground: 0 0% 100%;
+        --secondary: 217 33% 18%;
+        --secondary-foreground: 210 40% 98%;
+        --muted: 217 33% 18%;
+        --muted-foreground: 215 20% 65%;
+        --accent: 217 33% 20%;
+        --accent-foreground: 210 40% 98%;
+        --destructive: 0 62% 45%;
+        --destructive-foreground: 0 0% 100%;
+        --border: 215 28% 25%;
+        --input: 215 28% 25%;
+        --ring: 213 94% 55%;
+        --gold: 38 92% 50%;
+    }
+}
+
+@layer base {
+    * {
+        @apply border-border;
+    }
+    body {
+        @apply bg-background text-foreground;
+    }
+}
+
+@keyframes marquee {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+.marquee-track {
+    display: inline-block;
+    white-space: nowrap;
+    animation: marquee 22s linear infinite;
+}
+.marquee-fast {
+    animation: marquee 16s linear infinite;
+}
+
+.board-grid-bg {
+    background-image:
+        radial-gradient(circle at 20% 10%, rgba(37,99,235,0.08), transparent 40%),
+        radial-gradient(circle at 80% 90%, rgba(245,158,11,0.06), transparent 40%);
+}
+
+@layer base {
+    [data-debug-wrapper="true"] { display: contents !important; }
+}
