@@ -13,7 +13,8 @@ function Fasilitas({ s }) {
   return <div className="flex flex-wrap gap-1">{items}</div>;
 }
 
-export default function ScheduleTable({ schedules, isAdmin, onEdit, onDelete }) {
+export default function ScheduleTable({ schedules, isAdmin, onEdit, onDelete, showPetugas = true, showSurat = true }) {
+  const colCount = 6 + (showPetugas ? 1 : 0) + (showSurat ? 1 : 0) + (isAdmin ? 1 : 0);
   return (
     <div className="rounded-xl border border-border overflow-hidden bg-card">
       <div className="overflow-x-auto">
@@ -26,14 +27,14 @@ export default function ScheduleTable({ schedules, isAdmin, onEdit, onDelete }) 
               <TableHead className="text-white font-semibold">Pengguna</TableHead>
               <TableHead className="text-white font-semibold">Kegiatan/Rapat</TableHead>
               <TableHead className="text-white font-semibold">Fasilitas</TableHead>
-              <TableHead className="text-white font-semibold">Pencatat</TableHead>
-              <TableHead className="text-white font-semibold">Surat</TableHead>
+              {showPetugas && <TableHead className="text-white font-semibold">Pencatat</TableHead>}
+              {showSurat && <TableHead className="text-white font-semibold">Surat</TableHead>}
               {isAdmin && <TableHead className="text-white font-semibold text-right">Aksi</TableHead>}
             </TableRow>
           </TableHeader>
           <TableBody>
             {schedules.length === 0 && (
-              <TableRow><TableCell colSpan={isAdmin ? 9 : 8} className="text-center py-10 text-muted-foreground">Belum ada jadwal.</TableCell></TableRow>
+              <TableRow><TableCell colSpan={colCount} className="text-center py-10 text-muted-foreground">Belum ada jadwal.</TableCell></TableRow>
             )}
             {schedules.map((s) => (
               <TableRow key={s.id} data-testid={`schedule-row-${s.id}`} className="hover:bg-accent/40">
@@ -43,7 +44,8 @@ export default function ScheduleTable({ schedules, isAdmin, onEdit, onDelete }) 
                 <TableCell className="max-w-[180px]">{s.pengguna}</TableCell>
                 <TableCell className="max-w-[260px]">{s.kegiatan}</TableCell>
                 <TableCell><Fasilitas s={s} /></TableCell>
-                <TableCell className="whitespace-nowrap">{s.petugas_pencatat || "-"}</TableCell>
+                {showPetugas && <TableCell className="whitespace-nowrap">{s.petugas_pencatat || "-"}</TableCell>}
+                {showSurat && (
                 <TableCell>
                   {s.surat_files && s.surat_files.length > 0 ? (
                     <div className="flex flex-col gap-1">
@@ -62,6 +64,7 @@ export default function ScheduleTable({ schedules, isAdmin, onEdit, onDelete }) 
                     </Badge>
                   )}
                 </TableCell>
+                )}
                 {isAdmin && (
                   <TableCell className="text-right whitespace-nowrap">
                     <Button size="icon" variant="ghost" className="h-8 w-8" onClick={() => onEdit(s)} data-testid={`edit-${s.id}`}>

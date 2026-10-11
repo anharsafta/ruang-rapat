@@ -75,7 +75,7 @@ export default function PublicJadwal() {
             <TabsTrigger value="bulanan" data-testid="public-tab-bulanan">Kalender Bulanan</TabsTrigger>
           </TabsList>
           <TabsContent value="tabel">
-            <ScheduleTable schedules={filtered} isAdmin={false} />
+            <ScheduleTable schedules={filtered} isAdmin={false} showPetugas={false} showSurat={false} />
           </TabsContent>
           <TabsContent value="kalender">
             <div className="rounded-xl border border-border bg-card p-4">

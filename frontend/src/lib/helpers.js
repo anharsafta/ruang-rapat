@@ -31,8 +31,21 @@ export function formatTanggalFull(tanggal) {
 
 function toDate(tanggal, jam) {
   const [y, m, d] = tanggal.split("-").map(Number);
-  const [hh, mm] = jam.split(":").map(Number);
+  const valid = /^\d{1,2}:\d{2}$/.test(jam || "");
+  const [hh, mm] = valid ? jam.split(":").map(Number) : [23, 59];
   return new Date(y, m - 1, d, hh, mm, 0);
+}
+
+export function isOpenEnded(jam) {
+  return !/^\d{1,2}:\d{2}$/.test(jam || "");
+}
+
+export function fmtJam(jam) {
+  return /^\d{1,2}:\d{2}$/.test(jam || "") ? jam.replace(":", ".") : jam;
+}
+
+export function fmtWaktu(s) {
+  return `${fmtJam(s.jam_mulai)} - ${isOpenEnded(s.jam_selesai) ? "Selesai" : fmtJam(s.jam_selesai)}`;
 }
 
 // Status for display board
@@ -47,10 +60,10 @@ export function computeStatus(schedule, now = new Date()) {
 }
 
 export const STATUS_STYLE = {
-  "SEGERA DIGUNAKAN": { dot: "#F59E0B", row: "bg-amber-950/40", text: "text-amber-300", badge: "bg-amber-500/20 text-amber-300 border border-amber-500/50", icon: "🟡", pulse: true },
-  "SEDANG BERLANGSUNG": { dot: "#3B82F6", row: "bg-blue-950/40", text: "text-blue-300", badge: "bg-blue-500/20 text-blue-300 border border-blue-500/50", icon: "🔵", pulse: false },
-  "SELESAI": { dot: "#E2E8F0", row: "bg-slate-800/40", text: "text-slate-300", badge: "bg-slate-500/20 text-slate-200 border border-slate-400/40", icon: "⚪", pulse: false },
-  "TERJADWAL": { dot: "#EF4444", row: "bg-rose-950/40", text: "text-rose-300", badge: "bg-rose-500/20 text-rose-300 border border-rose-500/50", icon: "🔴", pulse: false },
+  "SEGERA DIGUNAKAN": { dot: "#F59E0B", row: "bg-white/[0.05]", text: "text-slate-100", badge: "bg-amber-500/15 text-amber-300 border border-amber-500/40", icon: "🟡", pulse: true },
+  "SEDANG BERLANGSUNG": { dot: "#3B82F6", row: "bg-white/[0.05]", text: "text-slate-100", badge: "bg-blue-500/15 text-blue-300 border border-blue-500/40", icon: "🔵", pulse: false },
+  "SELESAI": { dot: "#E2E8F0", row: "bg-white/[0.03]", text: "text-slate-400", badge: "bg-slate-500/15 text-slate-300 border border-slate-400/30", icon: "⚪", pulse: false },
+  "TERJADWAL": { dot: "#EF4444", row: "bg-white/[0.05]", text: "text-slate-100", badge: "bg-rose-500/15 text-rose-300 border border-rose-500/40", icon: "🔴", pulse: false },
 };
 
 export function sortSchedules(list) {
