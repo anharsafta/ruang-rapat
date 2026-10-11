@@ -1,0 +1,22 @@
+{
+  "summary": "Frontend-only verification of recent UI/behavior changes on Dashboard, ScheduleForm, PublicJadwal and Display. All 8 requested behaviors verified via Playwright against the public preview URL. All checks passed.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_4.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Dashboard.js uses localStorage key 'rapat_token' (OK). Just a note for next testers: when scripting cleanup via fetch, use localStorage.getItem('rapat_token').",
+    "ScheduleForm `openEnded` toggle resets Jam Selesai to '09:00' when unchecked — correct, but if the user had changed start-time to >=09:00 beforehand this could later be flagged by the 'jam selesai > jam mulai' validation. Minor UX nit, not blocking."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (skipped)", "frontend": "100%"},
+  "test_credentials": "Admin / Urdal (hardcoded admin)",
+  "seed_data_creation": "Created 2 schedules during testing (TEST_UnitKerja on 2026-10-20, TEST_OpenEnded on 2026-10-21 with jam_selesai='Selesai'). Both deleted via API after verification (DELETE 200).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 4 verified: (1) count-terjadwal chip present ('6 Terjadwal') and old stats-panel removed; (2) required-field asterisks on Tanggal, Ruangan, Jam Mulai, Jam Selesai, Pengguna, Petugas Pencatat; (3) toast validation messages 'Pilih ruangan' / 'Isi pengguna / unit kerja' / 'Pilih petugas pencatat' fire in order; Kegiatan empty does NOT block submission; (4) Submitting with only required fields filled succeeds (toast 'Jadwal berhasil ditambahkan'); (5) form-selesai-toggle switches Jam Selesai input to readonly value 'Selesai' and schedule saves successfully (dashboard shows '14:00 - Selesai'); (6) Overlapping schedule in same room/date as open-ended rejected with 409 and toast 'Bentrok jadwal! Ruangan Olah Bebaya sudah dipakai 14:00-Selesai'; (7) Public /jadwal headers = ['Tanggal','Ruangan','Waktu','Pengguna','Kegiatan/Rapat','Fasilitas'] — no Pencatat/Surat; (8) /display shows 'Informasi Jadwal Ruang Rapat', clock in HH.MM (e.g. 15.17), times use dots (e.g. '09.00 - 11.00'), open-ended displayed as 'Selesai', rows compact and no red row background. Login token key is 'rapat_token' in localStorage for any API cleanup scripts."
+}
