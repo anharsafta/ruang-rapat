@@ -178,12 +178,12 @@ export default function Dashboard() {
           </TabsContent>
           <TabsContent value="kalender">
             <div className="rounded-xl border border-border bg-card p-4">
-              <WeeklyCalendar schedules={activeSchedules} />
+              <WeeklyCalendar schedules={activeSchedules} rooms={settings.rooms} />
             </div>
           </TabsContent>
           <TabsContent value="bulanan">
             <div className="rounded-xl border border-border bg-card p-4">
-              <MonthlyCalendar schedules={schedules} onDateClick={(ds) => { setEditData(null); setPresetDate(ds); setFormOpen(true); }} />
+              <MonthlyCalendar schedules={schedules} rooms={settings.rooms} onDateClick={(ds) => { setEditData(null); setPresetDate(ds); setFormOpen(true); }} />
             </div>
           </TabsContent>
         </Tabs>

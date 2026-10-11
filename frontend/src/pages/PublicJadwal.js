@@ -79,12 +79,12 @@ export default function PublicJadwal() {
           </TabsContent>
           <TabsContent value="kalender">
             <div className="rounded-xl border border-border bg-card p-4">
-              <WeeklyCalendar schedules={active} />
+              <WeeklyCalendar schedules={active} rooms={rooms} />
             </div>
           </TabsContent>
           <TabsContent value="bulanan">
             <div className="rounded-xl border border-border bg-card p-4">
-              <MonthlyCalendar schedules={schedules} />
+              <MonthlyCalendar schedules={schedules} rooms={rooms} />
             </div>
           </TabsContent>
         </Tabs>

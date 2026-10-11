@@ -8,7 +8,7 @@ function dateStr(y, m, d) {
   return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
-export default function MonthlyCalendar({ schedules, onDateClick }) {
+export default function MonthlyCalendar({ schedules, onDateClick, rooms }) {
   const now = new Date();
   const [cursor, setCursor] = useState({ y: now.getFullYear(), m: now.getMonth() });
 
@@ -57,7 +57,7 @@ export default function MonthlyCalendar({ schedules, onDateClick }) {
               </div>
               <div className="space-y-1">
                 {items.slice(0, 3).map((s) => (
-                  <div key={s.id} className="rounded px-1.5 py-0.5 leading-tight" style={roomChipStyle(s.ruangan)} title={`${s.jam_mulai}-${s.jam_selesai} ${s.ruangan} — ${s.kegiatan}`}>
+                  <div key={s.id} className="rounded px-1.5 py-0.5 leading-tight" style={roomChipStyle(s.ruangan, rooms)} title={`${s.jam_mulai}-${s.jam_selesai} ${s.ruangan} — ${s.kegiatan}`}>
                     <div className="text-[10px] font-semibold truncate">{s.jam_mulai} {s.ruangan}</div>
                   </div>
                 ))}

@@ -15,7 +15,7 @@ function dateStr(d) {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
-export default function WeeklyCalendar({ schedules }) {
+export default function WeeklyCalendar({ schedules, rooms }) {
   const [weekStart, setWeekStart] = useState(startOfWeek(new Date()));
 
   const days = Array.from({ length: 7 }, (_, i) => {
@@ -62,7 +62,7 @@ export default function WeeklyCalendar({ schedules }) {
               <div className="space-y-1.5">
                 {items.length === 0 && <p className="text-[10px] text-muted-foreground text-center">—</p>}
                 {items.map((s) => (
-                  <div key={s.id} className="rounded-md px-2 py-1" style={roomChipStyle(s.ruangan)}>
+                  <div key={s.id} className="rounded-md px-2 py-1" style={roomChipStyle(s.ruangan, rooms)}>
                     <div className="text-[11px] font-semibold leading-tight">{s.jam_mulai}-{s.jam_selesai}</div>
                     <div className="text-[11px] font-medium leading-tight truncate" title={s.ruangan}>{s.ruangan}</div>
                     <div className="text-[10px] text-muted-foreground leading-tight truncate" title={s.kegiatan}>{s.kegiatan}</div>
