@@ -58,3 +58,21 @@ export function sortSchedules(list) {
     a.tanggal === b.tanggal ? a.jam_mulai.localeCompare(b.jam_mulai) : a.tanggal.localeCompare(b.tanggal)
   );
 }
+
+// Distinct, readable accent colors per room (theme-safe: used as left border + translucent tint)
+export const ROOM_PALETTE = [
+  "#0D47A1", "#B45309", "#166534", "#9F1239", "#6D28D9", "#0E7490",
+  "#B91C1C", "#1E40AF", "#C2410C", "#4D7C0F", "#A21CAF", "#0F766E",
+  "#7C2D12", "#155E75", "#581C87",
+];
+
+export function roomColor(room) {
+  let h = 0;
+  for (let i = 0; i < (room || "").length; i++) h = (h * 31 + room.charCodeAt(i)) >>> 0;
+  return ROOM_PALETTE[h % ROOM_PALETTE.length];
+}
+
+export function roomChipStyle(room) {
+  const c = roomColor(room);
+  return { borderLeft: `3px solid ${c}`, backgroundColor: `${c}22` };
+}

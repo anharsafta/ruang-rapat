@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { BULAN, HARI, todayStr } from "../lib/helpers";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { BULAN, HARI, todayStr, roomChipStyle } from "../lib/helpers";
+import { ChevronLeft, ChevronRight, Plus } from "lucide-react";
 
 const HARI_HDR = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
 
@@ -8,7 +8,7 @@ function dateStr(y, m, d) {
   return `${y}-${String(m + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
 }
 
-export default function MonthlyCalendar({ schedules }) {
+export default function MonthlyCalendar({ schedules, onDateClick }) {
   const now = new Date();
   const [cursor, setCursor] = useState({ y: now.getFullYear(), m: now.getMonth() });
 
@@ -47,13 +47,18 @@ export default function MonthlyCalendar({ schedules }) {
           const ds = dateStr(cursor.y, cursor.m, d);
           const items = (byDate[ds] || []).sort((a, b) => a.jam_mulai.localeCompare(b.jam_mulai));
           const isToday = ds === today;
+          const clickable = !!onDateClick;
           return (
-            <div key={i} className={`min-h-[96px] rounded-lg border p-1.5 ${isToday ? "border-primary bg-primary/5" : "border-border bg-card"}`}>
-              <div className={`text-xs font-bold mb-1 ${isToday ? "text-primary" : "text-muted-foreground"}`}>{d}</div>
+            <div key={i} data-testid={`month-cell-${ds}`} onClick={clickable ? () => onDateClick(ds) : undefined}
+              className={`group min-h-[96px] rounded-lg border p-1.5 transition-colors ${isToday ? "border-primary bg-primary/5" : "border-border bg-card"} ${clickable ? "cursor-pointer hover:border-primary hover:bg-primary/5" : ""}`}>
+              <div className="flex items-center justify-between mb-1">
+                <span className={`text-xs font-bold ${isToday ? "text-primary" : "text-muted-foreground"}`}>{d}</span>
+                {clickable && <Plus className="h-3.5 w-3.5 text-primary opacity-0 group-hover:opacity-100 transition-opacity" />}
+              </div>
               <div className="space-y-1">
                 {items.slice(0, 3).map((s) => (
-                  <div key={s.id} className="rounded bg-[#003366]/10 dark:bg-blue-500/20 px-1.5 py-0.5 leading-tight" title={`${s.jam_mulai}-${s.jam_selesai} ${s.ruangan} — ${s.kegiatan}`}>
-                    <div className="text-[10px] font-semibold text-[#003366] dark:text-blue-300 truncate">{s.jam_mulai} {s.ruangan}</div>
+                  <div key={s.id} className="rounded px-1.5 py-0.5 leading-tight" style={roomChipStyle(s.ruangan)} title={`${s.jam_mulai}-${s.jam_selesai} ${s.ruangan} — ${s.kegiatan}`}>
+                    <div className="text-[10px] font-semibold truncate">{s.jam_mulai} {s.ruangan}</div>
                   </div>
                 ))}
                 {items.length > 3 && <div className="text-[10px] text-muted-foreground px-1">+{items.length - 3} lagi</div>}

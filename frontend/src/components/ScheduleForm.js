@@ -18,15 +18,15 @@ const EMPTY = {
   nama_peminjam: "", no_wa: "", petugas_pencatat: "", surat_files: [],
 };
 
-export default function ScheduleForm({ open, onOpenChange, rooms, petugas, editData, onSaved }) {
+export default function ScheduleForm({ open, onOpenChange, rooms, petugas, editData, initialDate, onSaved }) {
   const [form, setForm] = useState(EMPTY);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const fileRef = useRef();
 
   useEffect(() => {
-    if (open) setForm(editData ? { ...EMPTY, ...editData } : EMPTY);
-  }, [open, editData]);
+    if (open) setForm(editData ? { ...EMPTY, ...editData } : { ...EMPTY, tanggal: initialDate || todayStr() });
+  }, [open, editData, initialDate]);
 
   const set = (k, v) => setForm((f) => ({ ...f, [k]: v }));
   const isRuhui = form.ruangan === RUHUI;

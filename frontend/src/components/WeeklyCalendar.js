@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { HARI_FULL, BULAN, todayStr } from "../lib/helpers";
+import { HARI_FULL, BULAN, todayStr, roomChipStyle } from "../lib/helpers";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 function startOfWeek(d) {
@@ -27,8 +27,6 @@ export default function WeeklyCalendar({ schedules }) {
   const weekEnd = days[6];
   const label = `${weekStart.getDate()} ${BULAN[weekStart.getMonth()]} - ${weekEnd.getDate()} ${BULAN[weekEnd.getMonth()]} ${weekEnd.getFullYear()}`;
   const today = todayStr();
-
-  const colors = ["border-l-blue-500", "border-l-amber-500", "border-l-emerald-500", "border-l-rose-500", "border-l-violet-500"];
 
   return (
     <div data-testid="weekly-calendar">
@@ -63,8 +61,8 @@ export default function WeeklyCalendar({ schedules }) {
               </div>
               <div className="space-y-1.5">
                 {items.length === 0 && <p className="text-[10px] text-muted-foreground text-center">—</p>}
-                {items.map((s, idx) => (
-                  <div key={s.id} className={`rounded-md bg-accent/60 border-l-2 ${colors[idx % colors.length]} px-2 py-1`}>
+                {items.map((s) => (
+                  <div key={s.id} className="rounded-md px-2 py-1" style={roomChipStyle(s.ruangan)}>
                     <div className="text-[11px] font-semibold leading-tight">{s.jam_mulai}-{s.jam_selesai}</div>
                     <div className="text-[11px] font-medium leading-tight truncate" title={s.ruangan}>{s.ruangan}</div>
                     <div className="text-[10px] text-muted-foreground leading-tight truncate" title={s.kegiatan}>{s.kegiatan}</div>

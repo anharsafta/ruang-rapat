@@ -35,6 +35,7 @@ export default function Dashboard() {
 
   const [formOpen, setFormOpen] = useState(false);
   const [editData, setEditData] = useState(null);
+  const [presetDate, setPresetDate] = useState(null);
   const [exportOpen, setExportOpen] = useState(false);
   const [shareOpen, setShareOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -119,7 +120,7 @@ export default function Dashboard() {
 
       <main className="flex-1 max-w-[1800px] w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-3 mb-5">
-          <Button size="lg" className="bg-[#003366] hover:bg-[#002347] text-white self-start" onClick={() => { setEditData(null); setFormOpen(true); }} data-testid="input-jadwal-baru-btn">
+          <Button size="lg" className="bg-[#003366] hover:bg-[#002347] text-white self-start" onClick={() => { setEditData(null); setPresetDate(null); setFormOpen(true); }} data-testid="input-jadwal-baru-btn">
             <Plus className="h-5 w-5 mr-2" /> INPUT JADWAL BARU
           </Button>
           <div className="flex flex-wrap items-center gap-2">
@@ -182,7 +183,7 @@ export default function Dashboard() {
           </TabsContent>
           <TabsContent value="bulanan">
             <div className="rounded-xl border border-border bg-card p-4">
-              <MonthlyCalendar schedules={schedules} />
+              <MonthlyCalendar schedules={schedules} onDateClick={(ds) => { setEditData(null); setPresetDate(ds); setFormOpen(true); }} />
             </div>
           </TabsContent>
         </Tabs>
@@ -190,7 +191,7 @@ export default function Dashboard() {
 
       <AppFooter />
 
-      <ScheduleForm open={formOpen} onOpenChange={setFormOpen} rooms={settings.rooms} petugas={settings.petugas} editData={editData} onSaved={onSaved} />
+      <ScheduleForm open={formOpen} onOpenChange={setFormOpen} rooms={settings.rooms} petugas={settings.petugas} editData={editData} initialDate={presetDate} onSaved={onSaved} />
       <ExportDialog open={exportOpen} onOpenChange={setExportOpen} schedules={schedules} />
       <SuccessPopup open={success} onClose={() => setSuccess(false)} />
 
